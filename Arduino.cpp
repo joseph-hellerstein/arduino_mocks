@@ -3,33 +3,32 @@
 */
 #include <iostream>
 #include <vector>
-#include "arduino_mocks.h"
+#include "Arduino.h"
 using namespace std;
 
+/*------------------------- Globals ----------------*/
+ArduinoMock arduino_mock = ArduinoMock();
+NativeSerial Serial = NativeSerial();
+/*-------------------------------------------------*/
 
-static ArduinoMock arduino_mock = ArduinoMock();
-
-ArduinoMock * getAdrduinoMock() {
-    return & arduino_mock;
-}
 
 /* ------------------*/
-/* Serial interface  */
+/* Native Serial interface  */
 /* ------------------*/
-Serial::Serial(){
+NativeSerial::NativeSerial(){
     return;
 }
 
-void Serial::begin(int speed) {
+void NativeSerial::begin(int speed) {
     this->speed = speed;
     arduino_mock.record("Set serial speed.");
 }
 
-void Serial::print(std::string msg) {
+void NativeSerial::print(std::string msg) {
     cout << msg;
 }
 
-void Serial::println(std::string msg) {
+void NativeSerial::println(std::string msg) {
     this->print(msg);
     cout << "\n";
 }
@@ -55,6 +54,10 @@ long millis() {
     return arduino_mock.getTime();
 };
 
+void delay(int duration) {
+    arduino_mock.time += duration;
+};
+
 /* ------------------*/
 /* SoftwareSerial    */
 /* ------------------*/
@@ -64,8 +67,18 @@ SoftwareSerial::SoftwareSerial(int rxPin, int txPin) {
     arduino_mock.update_pin_mode(txPin, OUTPUT);
 };
 
+void SoftwareSerial::begin(int speed) {
+    cout << "Opening SoftwareSerial at speed " + std::to_string(speed);
+    return;
+}
+
 void SoftwareSerial::print(string msg) {
     cout << "Software serial: " + msg;
+}
+
+void SoftwareSerial::println(string msg) {
+    string line = "Software serial: " + msg + "\n";
+    cout << line;
 }
 
 bool SoftwareSerial::available() {
@@ -78,7 +91,8 @@ char SoftwareSerial::read() {
 
 /* UltraSonic */
 SR04::SR04(int echo_pin, int trig_pin) {
-
+    this->echo_pin = echo_pin;
+    this->trig_pin = trig_pin;
 };
 
 

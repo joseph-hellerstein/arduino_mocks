@@ -1,3 +1,6 @@
+#ifndef arduino_mocks_h
+#define arduino_mocks_h
+
 #include <string>
 #include <vector>
 using namespace std;
@@ -16,10 +19,10 @@ using namespace std;
 #define LOW 1
 #define HIGH 2
 
-class Serial {
+class NativeSerial {
     public:
         int speed;
-        Serial();
+        NativeSerial();
         void begin(int speed);
         void print(std::string msg);
         void println(std::string msg);
@@ -29,7 +32,8 @@ class Serial {
 void pinMode(int pin, int mode);
 void digitalWrite(int pin, int value);
 void analogWrite(int pin, int value);
-long millis();   
+long millis();
+void delay(int duration);
 
 /* ------------------*/
 /* SoftwareSerial    */
@@ -41,7 +45,9 @@ class SoftwareSerial {
         int rxPin;
 
         SoftwareSerial(int rxPin, int txPin);
+        void begin(int speed);
         void print(string msg);
+        void println(string msg);
         bool available();
         char read();
 };
@@ -73,4 +79,7 @@ class ArduinoMock {
         void record(string msg); /* records an action */
 };
 
-ArduinoMock * getAdrduinoMock();
+extern NativeSerial Serial;
+extern ArduinoMock arduino_mock;
+
+#endif
