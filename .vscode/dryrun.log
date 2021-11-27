@@ -1,0 +1,12 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/josephhellerstein/home/Technical/Arduino/arduino_mocks'
+ 
+make: Leaving directory `/Users/josephhellerstein/home/Technical/Arduino/arduino_mocks'
+ 
+make: Entering directory `/Users/josephhellerstein/home/Technical/Arduino/arduino_mocks'
+g++ -std=c++11 -Wall -Wextra -g -o arduino_mocks.o -c arduino_mocks.cpp
+ 
+g++ -std=c++11 -Wall -Wextra -g -o main.o -c main.cpp
+g++ -std=c++11 -Wall -Wextra -g -o mocks arduino_mocks.o main.o 
+make: Leaving directory `/Users/josephhellerstein/home/Technical/Arduino/arduino_mocks'
+ 
