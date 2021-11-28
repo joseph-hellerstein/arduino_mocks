@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Arduino.h"
+#include "SR04.h"
 #include <assert.h>
 using namespace std;
 

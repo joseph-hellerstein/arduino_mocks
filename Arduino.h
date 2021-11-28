@@ -52,17 +52,6 @@ class SoftwareSerial {
         char read();
 };
 
-/* UltraSonic */
-class SR04 {
-    
-    public:
-        int echo_pin;
-        int trig_pin;
-
-        SR04(int echo_pin, int trig_pin);
-        int Distance();
-};
-
 /* AdruinoMock */
 class ArduinoMock {
 

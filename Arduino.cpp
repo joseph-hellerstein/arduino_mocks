@@ -89,13 +89,6 @@ char SoftwareSerial::read() {
     return SOFTWARE_SERIAL_READ;
 }
 
-/* UltraSonic */
-SR04::SR04(int echo_pin, int trig_pin) {
-    this->echo_pin = echo_pin;
-    this->trig_pin = trig_pin;
-};
-
-
 /* AdruinoMock */
 ArduinoMock::ArduinoMock() {
     this->time = 0;
