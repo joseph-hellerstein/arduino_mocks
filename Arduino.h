@@ -35,23 +35,6 @@ void analogWrite(int pin, int value);
 long millis();
 void delay(int duration);
 
-/* ------------------*/
-/* SoftwareSerial    */
-/* ------------------*/
-class SoftwareSerial {
-
-    public:
-        int txPin;
-        int rxPin;
-
-        SoftwareSerial(int rxPin, int txPin);
-        void begin(int speed);
-        void print(string msg);
-        void println(string msg);
-        bool available();
-        char read();
-};
-
 /* AdruinoMock */
 class ArduinoMock {
 

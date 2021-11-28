@@ -6,6 +6,8 @@
 #include "Arduino.h"
 #include "SR04.h"
 #include <assert.h>
+#include "SoftwareSerial.h"
+#include "common.h"
 using namespace std;
 
 void testNativeSerial() {
