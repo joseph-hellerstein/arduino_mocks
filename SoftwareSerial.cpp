@@ -14,19 +14,46 @@ void SoftwareSerial::begin(int speed) {
     return;
 }
 
-void SoftwareSerial::print(string msg) {
-    cout << "Software serial: " + msg;
-}
-
-void SoftwareSerial::println(string msg) {
-    string line = "Software serial: " + msg + "\n";
-    cout << line;
-}
-
 bool SoftwareSerial::available() {
     return TRUE;
 }
 
 char SoftwareSerial::read() {
     return SOFTWARE_SERIAL_READ;
+}
+
+void SoftwareSerial::print(std::string msg) {
+    cout << msg;
+}
+
+void SoftwareSerial::print(char msg) {
+    cout << std::to_string(msg);
+}
+
+void SoftwareSerial::print(int msg) {
+    cout << std::to_string(msg);
+}
+
+void SoftwareSerial::print(long msg) {
+    cout << std::to_string(msg);
+}
+
+void SoftwareSerial::println(int msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
+void SoftwareSerial::println(long msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
+void SoftwareSerial::println(char msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
+void SoftwareSerial::println(std::string msg) {
+    this->print(msg);
+    cout << "\n";
 }

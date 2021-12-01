@@ -24,8 +24,14 @@ class NativeSerial {
         int speed;
         NativeSerial();
         void begin(int speed);
+        void print(char msg);
+        void print(int msg);
+        void print(long msg);
         void print(std::string msg);
         void println(std::string msg);
+        void println(long msg);
+        void println(int msg);
+        void println(char msg);
 
 };
 

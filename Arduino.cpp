@@ -28,6 +28,33 @@ void NativeSerial::print(std::string msg) {
     cout << msg;
 }
 
+void NativeSerial::print(char msg) {
+    cout << std::to_string(msg);
+}
+
+void NativeSerial::print(int msg) {
+    cout << std::to_string(msg);
+}
+
+void NativeSerial::print(long msg) {
+    cout << std::to_string(msg);
+}
+
+void NativeSerial::println(int msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
+void NativeSerial::println(long msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
+void NativeSerial::println(char msg) {
+    this->print(std::to_string(msg));
+    cout << "\n";
+}
+
 void NativeSerial::println(std::string msg) {
     this->print(msg);
     cout << "\n";
