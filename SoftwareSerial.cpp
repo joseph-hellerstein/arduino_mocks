@@ -1,8 +1,12 @@
 #include "SoftwareSerial.h"
 #include <string>
 #include <iostream>
+#include <random>
 #include "Arduino.h"
 
+std::random_device rd;
+std::mt19937 mt(rd());
+std::uniform_int_distribution<double> dist(0, 1.0);
 
 SoftwareSerial::SoftwareSerial(int rxPin, int txPin) {
     arduino_mock.update_pin_mode(rxPin, INPUT);
@@ -15,7 +19,12 @@ void SoftwareSerial::begin(int speed) {
 }
 
 bool SoftwareSerial::available() {
-    return TRUE;
+    if (dist(mt) < 0.5) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
 }
 
 char SoftwareSerial::read() {

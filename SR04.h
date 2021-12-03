@@ -10,6 +10,7 @@ class SR04 {
     public:
         int echo_pin;
         int trig_pin;
+        long count;
 
         SR04(int echo_pin, int trig_pin);
         long Distance();

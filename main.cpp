@@ -59,8 +59,13 @@ void testSoftwareSerial() {
     assert(arduino_mock.pin_modes[rxPin] == INPUT);
     assert(arduino_mock.pin_modes[txPin] == OUTPUT);
     serial.print("Hello");
-    bool value = serial.available();
-    assert(value);
+    int sum = 0;
+    for (int i=0; i < 100; i++){
+        if (serial.available()) {
+            sum++;
+        }
+    }
+    assert(sum >40);
     char byte = serial.read();
     assert(byte == SOFTWARE_SERIAL_READ);
 }

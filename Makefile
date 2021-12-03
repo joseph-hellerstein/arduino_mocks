@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra -g
 LDFLAGS = 
 
 # Makefile settings - Can be customized.
-APPNAME = mocks
+APPNAME = exe_mocks
 EXT = .cpp
 SRCDIR = .
 OBJDIR = .
